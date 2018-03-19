@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "852002683465",
+    "firebase_url": "https://bucket-list-3d08f.firebaseio.com",
+    "project_id": "bucket-list-3d08f",
+    "storage_bucket": "bucket-list-3d08f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852002683465:android:8faf0540b264e7eb",
+        "android_client_info": {
+          "package_name": "com.omarica.bucketlist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852002683465-6lrn64nsm0sod95ofaaptld0fb9rqf1f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.omarica.bucketlist",
+            "certificate_hash": "909bf5434631f9ecdd1cfe085c551d280e9b8657"
+          }
+        },
+        {
+          "client_id": "852002683465-4u0fht2bj7cdk2o9ahc23uo471fo7oqo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBtfb2lbBgSiJm-LFN51wQIaAnlGpeVqU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852002683465-4u0fht2bj7cdk2o9ahc23uo471fo7oqo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
