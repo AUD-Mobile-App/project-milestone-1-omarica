@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mPasswordField;
     private FirebaseAuth mAuth;
     private Button loginButton;
+    private ProgressBar mProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,12 +36,21 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.loginButton);
         mAuth = FirebaseAuth.getInstance();
 
+        mProgressBar =  (ProgressBar)findViewById(R.id.progressBar);
+        mProgressBar.setVisibility(View.INVISIBLE);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                loginUser(mEmailField.getText().toString(),mPasswordField.getText().toString());
+                loginButton.setVisibility(View.INVISIBLE);
+                mProgressBar.setVisibility(View.VISIBLE);
+                if(!mEmailField.getText().toString().equals("") && !mPasswordField.getText().toString().equals("") ) {
+                    loginUser(mEmailField.getText().toString(), mPasswordField.getText().toString());
+                }
+                else {
+                    Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -57,18 +68,24 @@ public class LoginActivity extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+
+                loginButton.setVisibility(View.VISIBLE);
+                mProgressBar.setVisibility(View.INVISIBLE);
                 if (task.isSuccessful()) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithEmail:success");
+
                     FirebaseUser user = mAuth.getCurrentUser();
 
                     Intent intent = new Intent(LoginActivity.this, ListActivity.class);
                     intent.putExtra("User", user.getUid());
-
                     startActivity(intent);
 
                     //updateUI(user);
                 } else {
+
+                   /* loginButton.setVisibility(View.VISIBLE);
+                    mProgressBar.setVisibility(View.INVISIBLE); */
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.getException());
                     Toast.makeText(LoginActivity.this, "Authentication failed.",

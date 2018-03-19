@@ -61,4 +61,19 @@
         app:layout_constraintBottom_toTopOf="@+id/registerButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:elevation="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/loginButton"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/loginButton"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.5"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/loginButton"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="@+id/loginButton"/>
 </android.support.constraint.ConstraintLayout>
