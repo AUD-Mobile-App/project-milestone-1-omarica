@@ -27,6 +27,8 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private Button loginButton;
     private ProgressBar mProgressBar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,11 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.loginButton);
         mAuth = FirebaseAuth.getInstance();
 
+        /*
+        if(mAuth.getCurrentUser()!=null){
+            Intent intent = new Intent(LoginActivity.this, ListActivity.class);
+            startActivity(intent);
+        } */
         mProgressBar =  (ProgressBar)findViewById(R.id.progressBar);
         mProgressBar.setVisibility(View.INVISIBLE);
 
@@ -50,6 +57,9 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+
+                    loginButton.setVisibility(View.VISIBLE);
+                    mProgressBar.setVisibility(View.INVISIBLE);
                 }
 
             }
