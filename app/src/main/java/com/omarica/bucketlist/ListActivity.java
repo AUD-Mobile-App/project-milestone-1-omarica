@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -39,7 +40,7 @@ public class ListActivity extends AppCompatActivity {
         mListView = findViewById(R.id.listView);
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
-        Toast.makeText(this, user.getUid(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, user.getUid(), Toast.LENGTH_SHORT).show();
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("users").child(user.getUid());
@@ -48,6 +49,12 @@ public class ListActivity extends AppCompatActivity {
         mListView.setAdapter(mListAdapter);
 
 
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(ListActivity.this, i + "", Toast.LENGTH_SHORT).show();
+            }
+        });
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -113,7 +120,8 @@ public class ListActivity extends AppCompatActivity {
                     ds.getValue(BucketItem.class).getImgUrl(),
                     ds.getValue(BucketItem.class).getLocation(),
                     ds.getValue(BucketItem.class).isStatus(),
-                    ds.getKey());
+                    ds.getKey(),
+                    ds.getValue(BucketItem.class).getDueDate());
             mBucketItems.add(item);
         }
 
