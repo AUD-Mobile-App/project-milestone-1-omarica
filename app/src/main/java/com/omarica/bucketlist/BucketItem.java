@@ -12,6 +12,8 @@ public class BucketItem {
     private String imgUrl;
     private String location;
     private boolean status;
+    private String dueDate;
+
 
 
     public BucketItem() {
@@ -19,13 +21,22 @@ public class BucketItem {
     }
 
 
-    public BucketItem(String name, String description, String imgUrl, String location, boolean status, String key) {
+    public BucketItem(String name, String description, String imgUrl, String location, boolean status, String key, String dueDate) {
         this.name = name;
         this.description = description;
         this.imgUrl = imgUrl;
         this.location = location;
         this.status = status;
         this.key = key;
+        this.dueDate = dueDate;
+    }
+
+    public String getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
     }
 
     public String getKey() {
