@@ -36,12 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.loginButton);
         mAuth = FirebaseAuth.getInstance();
 
-        /*
-        if(mAuth.getCurrentUser()!=null){
-            Intent intent = new Intent(LoginActivity.this, ListActivity.class);
-            startActivity(intent);
-        } */
-        mProgressBar =  (ProgressBar)findViewById(R.id.progressBar);
+        mProgressBar = findViewById(R.id.progressBar);
         mProgressBar.setVisibility(View.INVISIBLE);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +54,6 @@ public class LoginActivity extends AppCompatActivity {
                     loginButton.setVisibility(View.VISIBLE);
                     mProgressBar.setVisibility(View.INVISIBLE);
                 }
-
             }
         });
     }
@@ -68,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Log.d(TAG, "signIn:" + email);
 
+        // Login with firebase
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -75,30 +70,21 @@ public class LoginActivity extends AppCompatActivity {
                 loginButton.setVisibility(View.VISIBLE);
                 mProgressBar.setVisibility(View.INVISIBLE);
                 if (task.isSuccessful()) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "signInWithEmail:success");
+                    Log.d(TAG, "Successfully logged in");
 
                     FirebaseUser user = mAuth.getCurrentUser();
-
                     Intent intent = new Intent(LoginActivity.this, ListActivity.class);
                     intent.putExtra("User", user.getUid());
                     startActivity(intent);
 
-                    //updateUI(user);
                 } else {
 
-                   /* loginButton.setVisibility(View.VISIBLE);
-                    mProgressBar.setVisibility(View.INVISIBLE); */
-                    // If sign in fails, display a message to the user.
-                    Log.w(TAG, "signInWithEmail:failure", task.getException());
+                    Log.w(TAG, "Failed to login", task.getException());
                     Toast.makeText(LoginActivity.this, "Authentication failed.",
                             Toast.LENGTH_SHORT).show();
-                    //updateUI(null);
                 }
 
-                // [START_EXCLUDE]
                 if (!task.isSuccessful()) {
-                    //mStatusTextView.setText(R.string.auth_failed);
                 }
             }
         });
