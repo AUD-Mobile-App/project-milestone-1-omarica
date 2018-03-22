@@ -38,7 +38,6 @@ public class AddItemActivity extends FragmentActivity implements OnMapReadyCallb
     TextView dueDateTextView;
     LatLng position;
     Toolbar mToolbar;
-    Marker marker;
     DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
@@ -150,7 +149,6 @@ public class AddItemActivity extends FragmentActivity implements OnMapReadyCallb
             }
         });
 
-        // Add a marker in Sydney, Australia, and move the camera.
         LatLng aud = new LatLng(25.0912, 55.1561);
         mMap.addMarker(new MarkerOptions().position(aud).title("Selected Location")).setDraggable(true);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(aud, 10));

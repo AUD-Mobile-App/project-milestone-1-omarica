@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Bucket List</string>
+    <string name="location">Location:</string>
+    <string name="item_name">Item Name</string>
+    <string name="item_description">Item Description</string>
+    <string name="add_item">Add Item</string>
+    <string name="due_date_not_selected">Due Date: Not Selected</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
 </resources>

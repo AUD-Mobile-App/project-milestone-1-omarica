@@ -5,9 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -48,13 +46,13 @@ public class ListActivity extends AppCompatActivity {
         mListAdapter = new ListAdapter(this, mBucketItems, myRef);
         mListView.setAdapter(mListAdapter);
 
-
+        /*
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(ListActivity.this, i + "", Toast.LENGTH_SHORT).show();
             }
-        });
+        }); */
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -67,6 +65,7 @@ public class ListActivity extends AppCompatActivity {
 
             }
         });
+
        /* myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
